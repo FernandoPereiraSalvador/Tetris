@@ -31,6 +31,7 @@ class Figure(pygame.sprite.Sprite):
             self.rect.move_ip(0, CELL_SIZE)
         else:
             self.update_board()
+            self.board.check_and_clear_lines()
             return False
 
         return True
