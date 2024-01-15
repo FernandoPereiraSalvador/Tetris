@@ -11,6 +11,7 @@ class TetrisGame:
         self.clock = pygame.time.Clock()
         self.board = Board()
         self.figures = [Figure(self.board)]
+        self.game_over = False
 
     def draw_grid(self):
         for y, row in enumerate(self.board.grid):
@@ -26,7 +27,7 @@ class TetrisGame:
         self.screen.blit(figure.surf, figure.rect.topleft)
 
     def run_game(self):
-        while True:
+        while not self.game_over:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -42,6 +43,11 @@ class TetrisGame:
 
             # Move and draw the current figure
             if not self.figures[-1].move():
+                # Check for game over condition
+                if any(self.board.grid[1]):
+                    self.game_over = True
+                    print("Game Over")
+                    break
                 self.figures.append(Figure(self.board))
 
             # Draw the current figure on each iteration with its color
