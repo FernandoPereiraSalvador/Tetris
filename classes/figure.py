@@ -36,8 +36,9 @@ class Figure(pygame.sprite.Sprite):
 
         return True
 
-    def check_collision(self, dx, dy):
-        for y, row in enumerate(self.shape):
+    def check_collision(self, dx, dy, shape=None):
+        shape_to_check = shape or self.shape
+        for y, row in enumerate(shape_to_check):
             for x, cell in enumerate(row):
                 if cell:
                     new_x = (self.rect.left // CELL_SIZE) + x + dx
@@ -57,3 +58,17 @@ class Figure(pygame.sprite.Sprite):
                         self.board.grid[grid_y][grid_x] = self.color
 
         self.board.clear_line(0)
+
+    def rotate(self):
+        rotated_shape = list(zip(*reversed(self.shape)))
+        if not self.check_collision(0, 0, rotated_shape):
+            self.shape = rotated_shape
+            self.update_surface()
+
+    def update_surface(self):
+        self.surf = pygame.Surface((CELL_SIZE * len(self.shape[0]), CELL_SIZE * len(self.shape)), pygame.SRCALPHA)
+        for y, row in enumerate(self.shape):
+            for x, cell in enumerate(row):
+                if cell:
+                    pygame.draw.rect(self.surf, self.color + (128,),
+                                     pygame.Rect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE))

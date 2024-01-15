@@ -31,6 +31,9 @@ class TetrisGame:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_z:
+                        self.figures[-1].rotate()
 
             self.screen.fill((0, 0, 0))
 

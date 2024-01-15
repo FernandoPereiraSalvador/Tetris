@@ -17,7 +17,7 @@ PIECES = [
      [0, 1, 1]],
 
     [[0, 1, 1],
-     [1, 1]],
+     [1, 1, 0]],
 ]
 
 # List of colors for the figures
