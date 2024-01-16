@@ -10,7 +10,7 @@ class Figure(pygame.sprite.Sprite):
         self.shape = random.choice(PIECES)
         self.color = COLORS[PIECES.index(self.shape)]  # Assign color according to the figure
         self.surf = pygame.Surface((CELL_SIZE * len(self.shape[0]), CELL_SIZE * len(self.shape)), pygame.SRCALPHA)
-        self.rect = self.surf.get_rect(topleft=(400, 0))
+        self.rect = self.surf.get_rect(topleft=(200, 0))
         self.board = board
 
         # Draw the blocks of the figure (excluding blanks).

@@ -1,6 +1,6 @@
 # Size of the boxes
 CELL_SIZE = 40
-GRID_WIDTH = 800 // CELL_SIZE
+GRID_WIDTH = 500 // CELL_SIZE
 GRID_HEIGHT = 600 // CELL_SIZE
 
 # Tetris pieces
@@ -18,6 +18,8 @@ PIECES = [
 
     [[0, 1, 1],
      [1, 1, 0]],
+
+
 ]
 
 # List of colors for the figures

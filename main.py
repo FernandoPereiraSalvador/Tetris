@@ -4,6 +4,7 @@ from classes.board import Board
 from classes.figure import Figure
 from constants import *
 
+
 class TetrisGame:
     def __init__(self):
         pygame.init()
@@ -55,6 +56,7 @@ class TetrisGame:
 
             pygame.display.flip()
             self.clock.tick(5)
+
 
 if __name__ == "__main__":
     tetris_game = TetrisGame()
